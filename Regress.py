@@ -3,11 +3,27 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import math
+
+
+
 # nomes únicos (linhas)
 nomes = ["Ana", "Bruno", "Carla", "Diogo", "Eva"]
 
 # meses (colunas)
-meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"]
+meses = list(range(1,6+1)) #["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"]
+
+# ano atual
+ano = pd.Timestamp.today().year
+# intervalo de datas (1 Jan até 30 Jun)
+datas = pd.date_range(
+    start=f"{ano}-01-01",
+    end=f"{ano}-06-30",
+    freq="D"
+)
+print(datas)
+
+
+
 
 # gerar dados aleatórios entre 0 e 4
 dados = np.random.randint(0, 5, size=(len(nomes), len(meses)))
@@ -19,13 +35,13 @@ print(df1)
 variaveis = ["x1", "x2", "x3", "x4"]
 
 # gerar valores aleatórios entre 0 e 100
-dados = np.random.randint(0, 101, size=(len(meses), len(variaveis)))
-df2 = pd.DataFrame(dados, index=meses, columns=variaveis)
+dados = np.random.randint(0, 101, size=(len(datas), len(variaveis)))
+df2 = pd.DataFrame(dados, index=datas, columns=variaveis)
 print(df2)
 
 # gerar valores aleatórios entre 0 e 100
-dados = np.random.randint(0, 101, size=(len(meses), len(nomes)))
-df3 = pd.DataFrame(dados, index=meses, columns=nomes)
+dados = np.random.randint(0, 101, size=(len(datas), len(nomes)))
+df3 = pd.DataFrame(dados, index=datas, columns=nomes)
 print(df3)
 
 
@@ -36,17 +52,18 @@ print(df3)
 
 resultado = pd.DataFrame(index=df3.index, columns=df3.columns)
 
-for mes in df3.index:
+for data in df3.index:
     for nome in df3.columns:
+        mes = data.month
         var_idx = df1.loc[nome, mes]  # valor entre 0 e 4
         
         if var_idx == 0:
-            resultado.loc[mes, nome] = (df3.loc[mes, nome], None)
+            resultado.loc[data, nome] = (df3.loc[data, nome], None)
         else:
             var_nome = f"x{var_idx}"
-            resultado.loc[mes, nome] = (
-                df3.loc[mes, nome],
-                df2.loc[mes, var_nome]
+            resultado.loc[data, nome] = (
+                df3.loc[data, nome],
+                df2.loc[data, var_nome]
             )
 print(resultado)
 
