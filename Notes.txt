@@ -1,28 +1,10 @@
-Notícias/News: Nota: Colocar acessos do FT no word/onenote para não os perder.
-Market News (FT): Fazer slots no calendário. Notícias para 2ª-feira: 4/5 notícias + Single Name
-Topics/Assuntos/Temas: Home, World, Middle East War, Markets (Private Credit/Markets, Bonds), Technology.
-Ver notícias mais importantes e colocar/enviar as notícias no chat da equipa:
-•	O que eu achar importante (Se tiver impacto, então é uma notícia importante). Depois o resto a equipa decide quais as notícias mais importantes a apresentar/selecionar
-o	Ajuda a perceber o que é importante (Desenvolver a capacidade de perceber o que é importante e o que não é (Awareness)) e como filtrar as notícias posteriormente.
-o	Bom para sensibilizar e Ajudar a equipa.
-•	Colocar as notícias dos podcasts no chat da equipa para ver as respostas/comentários
-•	É importante que a parte do trabalho das notícias seja realizado/apresentado por mim no dia-a-dia
 
-Single Name: 
-•	Usar Market 360: News & Views: EU Financials & IG Corp
-•	Ser bastante seletivo no que diz respeito a:
-o	Aspetos importantes para filtrar os nomes importantes: PnL + Grande Posição no Nome.
-o	Selecionar apenas Single Names com posição elevada (c/ PnL > 200k é que são relevantes apresentar) ou com impacto significativo para o BNP.
-o	Ver sempre se impacta o PnL.
-•	Reportar dos valores sempre para as datas de 5ª a 5ª (09/04 – 16/04):
-o	Manter o formato de apresentação das News no report;
-o	Verificar sempre o risco da posição (short/long risk);
-o	Node GBCFL -> Flow Total
-•	Softwares/Tools:
-o	MRX (Análise histórica, Tamanho da posição);
-o	ONCA (PnL Single Name),
-o	Risk Credit Toolbox (Sector report) / MRX
-o	RAMP / Risk Credit Toolbox (Curva EU 5Y / Posição(ões))
-•	Curvas:
-o	Perceber como usar o RAMP para tirar as curvas; Usar o toolbox para confirmar valores.
-o	Se não existir informação no RAMP/Toolbox, então usar o Markit
+
+
+EXCEL (Search tricks)
+•	N.º: =IF(OR(ISBLANK(K2),J3="No results"),SEQUENCE(1,1,0),SEQUENCE(IF(OR(ISBLANK(K2),J3="No results"),0,COUNTA(IF(ISBLANK(K2),"-",IFERROR(FILTER($E$3:$E$1452,ISNUMBER(SEARCH(K2,$E$3:$E$1452))),"No results")))),1,1,1))
+•	Security: =IF(ISBLANK(K2),"No results",IFERROR(FILTER($E$3:$E$1452,ISNUMBER(SEARCH(K2,$E$3:$E$1452))),"No results"))
+•	FILTER (SECURITY): =IF(ISBLANK(K2),"",FILTER(B3:G1407,ISNUMBER(MATCH($E$3:$E$1407,FILTER($E$3:$E$1452,ISNUMBER(SEARCH(K2,$E$3:$E$1452))),0))))
+•	FILTER (VALIDAÇÃO DE DADOS): =IF(ISBLANK(W3),"",FILTER(B3:G1407,$E$3:$E$1407=W3,))
+
+
