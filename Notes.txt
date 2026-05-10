@@ -1,4 +1,78 @@
 
+*Passar para o OneNote
+Noticias: 
+Noticias têm de estar prontas às 11:30.
+Fazer notícias (Single Name e Mkt News) ao longo da semana e enviar por email todos os dias, depois segunda-feira é só atualizar as Posições/PnL.
+Dizer apenas uma frase (highlight) sucinta/curta no texto por notícia:
+Ser sucinto; Perceber a noticia, ficar confortável com a noticia. Se fizerem uma pergunta e não souber responder, dizer “I’ll check that and come back to you after”.
+Treinar em casa a apresentação das notícias – Fazer trial; Melhorar pronúncia/fluência; Treinar para ficar mais à vontade para apresentar as noticias.
+Selecionar Single Names com base na posição e nem tanto com base no PnL.
+Fazer Sorting das notícias com base no PnL (ordem decrescente) em termos absolutos.
+Valores: Valores Posições, Spreads (bps/%) e PnL todos arredondados à unidade. Posição/Spreads -> Prev. date: última quinta-feira; Current date: dia anterior a TODAY.
+
+PnL:
+Questão importante: De onde veio o efeito das % da decomposição do PnL -> Se vier maior parte de market/time effects não interessa muito.
+Tipo de análise de PnL -> Por produto; Tentar perceber porque descemos em cash e aumentamos em derivativos.
+PnL: Questão do Focus Alias, Gtr Code/Name quando vejo as posições
+
+Reports: Estudar Sector e MainPos reports.
+Correr reports todos os dias (link das views lá para ver), e depois e analisar os outputs.
+Próxima semana passar a ser eu a correr + enviar o Sector report.
+To Do: Editar código Sector/MainPos para colocar os reports numa pasta com a data; Perceber como adicionar filtros no Sector report. 
+Sector / MainPos Reports: Testar, Tentar replicar; file name: “run_sector_report”
+
+EM Countries Monitoring:
+Passar a ser eu responsável por enviar o email do report à quinta-feira. (Lembrete)
+Excel no diretório “RISK PT Training”.
+Excluo APAC, selecionar só EM Countries; Só countries com 100M (GLCM); Long exposure >50%
+
+
+RAMP:
+Spreads: Single Names; Index CDS
+Ver quais os Packages de python que acedem ao RAMP (funções): RISK MFI Credit trading.
+
+MRX Views:
+MultiRowRisk; Node: GBCFLM, GBCSFEU, FG…10; Columns: … -> Ver a view no email Patricio.
+
+
+Betas:
+Produzir código python pedido pelo João. Perguntar ao João como ver o Live PnL.
+Tirar os betas das regressões para os principais índices (Traxx, CDX; IG, HY) para todos os Focus Alias -> Usar a View das posições para obter os Focus Alias e depis obter apenas as referencias das Curvas de CDS (não de bonds ou de outros produtos).
+Organizar o código com funções para perceber como otimizar;
+Colocar print do tempo que demora a correr o ciclo que extrai as curvas todas.
+
+
+Listagem/Mapeamento de dados referência:
+Fazer a listagem/Mapeamento: Gtr Name/Code -> Focus Alias -> CDS Curve; Para ser mais fácil tirar do RAMP os dados para excel (através do QCD) (Necessário para ter os valores de spreads para o report MainPos e para calcular os betas)
+Fazer Mapping: Gtr Name -> Curvas; Sectors -> Sub-sectors (EXTRAIR DO PC DA BLOOMBERG Perguntar ao José?) -> Importante para perceber como colocar filtros no Sector report.
+
+
+To do (IMPORTANTE):
+Fazer a estrutura do email que é para enviar na segunda-feira (deixar só as posições por preencher)
+Organizar/Ler emails.
+Fazer PIN dos ficheiros/pastas no Quick Access.
+Fazer pedido do monitor; Pedir dia off para quarta-feira (dia 13) e ir tratar do IRS Jovem nas finanças.
+
+NEWS EXCEL LINK: https://ulisboa-my.sharepoint.com/:x:/g/personal/ist191052_tecnico_ulisboa_pt/IQCoT_ce_rlaSLoYKepWUrjnAfrqEkkyVpISUDP0wcbdGQM?e=LPcTYG
+
+=LET(
+v;SORT(A1:E1;;-1);
+s1;INDEX(v;1);
+s2;s1+INDEX(v;2);
+s3;s2+INDEX(v;3);
+
+IF(s3>=95; TAKE(v;;3);
+IF(s2>=75; TAKE(v;;2);
+IF(s1>=50; TAKE(v;;1);
+"PnL muito distribuído"
+)))
+)
+
+
+
+
+
+
 
 
 EXCEL (Search tricks)
@@ -6,107 +80,4 @@ EXCEL (Search tricks)
 •	Security: =IF(ISBLANK(K2),"No results",IFERROR(FILTER($E$3:$E$1452,ISNUMBER(SEARCH(K2,$E$3:$E$1452))),"No results"))
 •	FILTER (SECURITY): =IF(ISBLANK(K2),"",FILTER(B3:G1407,ISNUMBER(MATCH($E$3:$E$1407,FILTER($E$3:$E$1452,ISNUMBER(SEARCH(K2,$E$3:$E$1452))),0))))
 •	FILTER (VALIDAÇÃO DE DADOS): =IF(ISBLANK(W3),"",FILTER(B3:G1407,$E$3:$E$1407=W3,))
-
-
-Middle East War:
-•	Trump keeps pressure on Iran — frustrated with talks, maintaining the Hormuz blockade despite saying a deal is still possible. 
-•	Iran’s supreme leader rejects concessions, vowing to defend the nuclear programme and control of the Strait; Inflation in Iran hits 50%.
-•	The war disrupts global trade, with ships rerouting via the Cape of Good Hope and the US warning against paying Iran for Hormuz passage. 
-•	Oil tops $126 as supply tightens, with markets bracing for a crunch, while Gulf exporters like Saudi Arabia stand to benefit. 
-•	Markets stay resilient: stocks hit records on AI optimism, while bonds rise as weaker growth and softer signals from central banks tempers rate hike fears; emerging markets gain on fresh Iran proposal.
-
-•	Trump is reviewing Iran’s latest peace proposal as the war enters its 10th week, expressing doubt it will be enough and leaving open the possibility of renewed strikes on Iranian military targets if Tehran “misbehaves,” while still framing diplomacy and pressure as running in parallel.
-•	The US will begin a “humanitarian” effort to guide stranded or neutral ships out of the Strait of Hormuz amid major shipping disruptions, with Trump citing “very positive discussions” with Iran and presenting the move as limited support for commercial navigation.
-•	Traffic through Hormuz has nearly stalled as Trump weighs the peace deal, and oil prices fell after the US signaled it would help guide ships through the strait and hinted at progress in talks to end the conflict.
-
-Links:
-https://www.ft.com/content/6247449b-5a73-47a8-8cd4-c8ef295e6776
-https://www.ft.com/content/d91c1132-c4ae-4d9d-99bd-142e5a262b6a
-https://www.ft.com/content/1d5ec542-fa26-4966-8468-101647851bef
-https://www.ft.com/content/017d2524-22c6-4dce-8853-66b95cc5e70e
-https://www.ft.com/content/b26ba4ce-4324-4ea9-926d-caf036f20832
-https://www.ft.com/content/c78b853e-177b-4a67-9507-05e1a404c05a
-https://www.ft.com/content/63133c10-dac7-41f0-8c9f-831fc5f9ebf6
-https://www.bloomberg.com/news/articles/2026-05-01/us-warns-shippers-of-possible-sanctions-if-they-pay-hormuz-tolls
-https://www.bloomberg.com/news/videos/2026-05-01/trump-says-iran-wants-a-deal-but-he-s-not-satisfied-video
-https://www.bloomberg.com/news/articles/2026-05-01/iran-says-trump-s-blockade-will-keep-pushing-up-oil-prices
-https://www.bloomberg.com/news/videos/2026-05-01/trump-sticks-with-blockade-says-it-s-incredible-video
-https://www.bloomberg.com/news/videos/2026-05-01/skyrocketing-gasoline-prices-mounts-pressure-on-trump-video
-https://www.bloomberg.com/news/articles/2026-04-30/stock-market-today-dow-s-p-live-updates
-https://www.bloomberg.com/news/articles/2026-04-30/latest-oil-market-news-and-analysis-for-may-1
-https://www.bloomberg.com/news/videos/2026-05-01/oil-holds-weekly-gain-as-trump-sticks-with-blockade-video
-https://www.bloomberg.com/news/articles/2026-05-01/emerging-markets-eke-out-gains-in-thin-volume-holiday-trading
-https://www.bloomberg.com/news/articles/2026-05-01/us-stock-futures-mixed-after-record-as-earnings-week-wraps-up
-https://www.bloomberg.com/news/articles/2026-05-01/saudi-arabia-set-for-oil-windfall-after-hormuz-boosts-prices
-
-Links:
-https://www.bloomberg.com/news/articles/2026-05-03/trump-weighs-iranian-peace-offer-without-ruling-out-more-strikes
-https://www.ft.com/content/fb1aae4a-ec0c-48ed-bf0a-6639071499d3
-https://www.bloomberg.com/news/articles/2026-05-02/trump-says-prefers-not-to-strike-iran-even-as-frustration-mounts
-https://www.ft.com/content/7ec081ca-3b1d-4fbe-b29a-a3b0b08efc41
-https://www.bloomberg.com/news/articles/2026-05-03/trump-says-us-to-help-some-ships-leave-hormuz-starting-monday-moq8rux1
-https://www.bloomberg.com/news/articles/2026-05-03/trump-says-us-to-help-some-ships-leave-hormuz-starting-monday
-https://www.bloomberg.com/news/articles/2026-05-03/hormuz-tracker-traffic-halts-as-trump-weighs-iran-s-new-offer
-https://www.bloomberg.com/news/articles/2026-05-03/latest-oil-market-news-and-analysis-for-may-4
-
-
-Global Economy:
-ECB and BoE warn of rate rises as they grapple with Middle East shock
-•	The ECB and BoE held rates steady but warned they may need to raise them if the Iran-driven energy shock keeps inflation high.
-•	Rising energy costs are already pushing inflation up (Eurozone at 3%), with policymakers worried about “second-round effects” like higher wages and broader price increases. 
-•	Growth remains weak (Eurozone 0.1%, US 2%), and central banks signal that prolonged energy pressures could force tighter policy despite risks to the economy.
-Link: https://www.ft.com/content/c78b853e-177b-4a67-9507-05e1a404c05a
-
-ECB Is Leaning Toward Rate Hikes – The ECB is leaning toward rate hikes as soon as next month, unless energy prices ease or there is progress toward ending the Iran war, amid ongoing inflation pressure. 
-Link: https://www.bloomberg.com/news/articles/2026-05-02/world-economy-latest-ecb-leans-toward-rate-hike-on-mounting-inflation
-
-Trump says he will raise tariff on EU vehicles to 25%
-•	Trump plans to raise tariffs on EU car imports ‘next week’ to 25%, pressuring automakers to move production to the US. 
-•	EU officials call the move “unacceptable”, warning it damages trust and transatlantic trade ties. 
-•	Broader tariffs are already hitting flows, with UK exports to the US dropping and trade surpluses turning into deficits.
-Links: https://www.ft.com/content/26d64f97-8773-42d4-aaa4-35ff67e1e3c5
-https://www.bloomberg.com/news/articles/2026-05-01/trump-says-us-to-raise-tariff-rate-on-eu-cars-trucks-to-25
-https://www.bloomberg.com/news/articles/2026-05-01/eu-parliament-trade-chief-calls-trump-tariff-threat-unacceptable
-https://www.bloomberg.com/news/articles/2026-05-01/trump-s-us-tariffs-turn-british-trade-surpluses-into-deficits
-
-How Britain Became a Disunited Kingdom – UK local elections are expected to expose a fractured political landscape, highlighting the breakdown of the traditional two-party system that has dominated since World War II.
-Link: https://www.bloomberg.com/news/articles/2026-05-03/how-britain-became-a-disunited-kingdom-in-five-charts
-
-
-Credit Markets:
-Ares attracts nearly $20bn from investors, with real estate and infrastructure helping offset weakness in its core private credit business.
-Link: https://www.ft.com/content/410de46e-742e-4c00-97d8-d035ece65b72
-Blue Owl pulls in $9bn, though growth masks weaker-than-expected increases in fee-paying assets.
-Link: https://www.ft.com/content/4cb43bed-89a1-46f3-add3-2c5430ff465a
-BNP Paribas, Crédit Agricole and Société Générale miss out on trading gains seen by Wall Street rivals despite higher first-quarter profit.
-Link: https://www.ft.com/content/17ddd0e0-6484-4467-ae6d-ac3f149da23a
-Bond traders hedge for both rate cuts and hikes as divisions emerge within the Federal Reserve.
-Link: https://www.bloomberg.com/news/articles/2026-05-01/bond-traders-hedge-for-both-cuts-and-hikes-after-fed-division
-US municipal bonds post their best April since 2014, rebounding strongly after war-driven volatility.
-Link: https://www.bloomberg.com/news/articles/2026-05-01/rebound-from-war-swoon-fuels-best-april-for-munis-since-2014
-
-Bond Traders Look to Treasury Refunding, Fed Speakers and Jobs – US bond traders are focused on Treasury borrowing plans, Fed speakers, and a packed economic calendar led by monthly jobs data shaping rate expectations. 
-Link: https://www.bloomberg.com/news/articles/2026-05-03/bond-traders-look-to-treasury-refunding-fed-speakers-and-jobs
-
-‘No Margin for Error’ Sparks Rush for Hedges in Emerging Bonds – Investors are rushing into hedging and relative-value trades in emerging-market bonds, as strategists warn the rally is increasingly disconnected from risks tied to the Middle East conflict.
-Link: https://www.bloomberg.com/news/articles/2026-05-03/-no-margin-for-error-sparks-rush-for-hedges-in-emerging-bonds
-
-Investors pile into clean energy as Iran war drives push for energy security – Clean energy funds are seeing their biggest inflows in five years, as the Iran war shifts investor focus from climate themes to energy security concerns. 
-Link: https://www.ft.com/content/9921f2b5-c910-4cec-a50f-cad453935a1a
-
-
-Technology:
-Apple credits ‘most popular’ ever iPhone for booming sales - Apple reports strong growth, with revenue up 17% to $111bn, driven by record demand for the iPhone 17. Tim Cook highlights surging iPhone sales (+20%), as John Ternus prepares to take over as CEO. 
-Link: https://www.ft.com/content/9215954c-47d0-4a59-8ffe-bf49f8ef9a97
-Caterpillar’s Biggest Bear Folds as AI Power Demand Soars - Caterpillar Inc.’s biggest Wall Street bear has thrown in the towel after watching the stock more than double on the back of surging demand for the company’s power generation equipment.
-Link: https://www.bloomberg.com/news/articles/2026-05-01/caterpillar-s-biggest-bear-folds-as-ai-power-demand-soars
-Air Canada Pulls 2026 Outlook on Fuel Costs; Shares Drop - Air Canada suspended its full-year financial guidance because of the surge in jet fuel prices caused by the war in Iran.
-Link: https://www.bloomberg.com/news/articles/2026-04-30/air-canada-suspends-2026-guidance-amid-rising-fuel-prices
-Spirit Airlines winds down operations after bailout talks founder
-Spirit Airlines is winding down operations after bailout talks collapsed, with Trump saying a rescue would only proceed “if it’s a good deal,” leaving passengers stranded and causing disruption across US airports.
-Links: https://www.ft.com/content/18ab5a6a-397a-47b5-af06-f8e846b45bf1
-https://www.bloomberg.com/news/videos/2026-05-03/sununu-spirit-bailout-made-no-financial-sense-video
-
-
-
 
