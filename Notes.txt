@@ -1,58 +1,4 @@
 
-*Passar para o OneNote
-Noticias: 
-Noticias têm de estar prontas às 11:30.
-Fazer notícias (Single Name e Mkt News) ao longo da semana e enviar por email todos os dias, depois segunda-feira é só atualizar as Posições/PnL.
-Dizer apenas uma frase (highlight) sucinta/curta no texto por notícia:
-Ser sucinto; Perceber a noticia, ficar confortável com a noticia. Se fizerem uma pergunta e não souber responder, dizer “I’ll check that and come back to you after”.
-Treinar em casa a apresentação das notícias – Fazer trial; Melhorar pronúncia/fluência; Treinar para ficar mais à vontade para apresentar as noticias.
-Selecionar Single Names com base na posição e nem tanto com base no PnL.
-Fazer Sorting das notícias com base no PnL (ordem decrescente) em termos absolutos.
-Valores: Valores Posições, Spreads (bps/%) e PnL todos arredondados à unidade. Posição/Spreads -> Prev. date: última quinta-feira; Current date: dia anterior a TODAY.
-
-PnL:
-Questão importante: De onde veio o efeito das % da decomposição do PnL -> Se vier maior parte de market/time effects não interessa muito.
-Tipo de análise de PnL -> Por produto; Tentar perceber porque descemos em cash e aumentamos em derivativos.
-PnL: Questão do Focus Alias, Gtr Code/Name quando vejo as posições
-
-Reports: Estudar Sector e MainPos reports.
-Correr reports todos os dias (link das views lá para ver), e depois e analisar os outputs.
-Próxima semana passar a ser eu a correr + enviar o Sector report.
-To Do: Editar código Sector/MainPos para colocar os reports numa pasta com a data; Perceber como adicionar filtros no Sector report. 
-Sector / MainPos Reports: Testar, Tentar replicar; file name: “run_sector_report”
-
-EM Countries Monitoring:
-Passar a ser eu responsável por enviar o email do report à quinta-feira. (Lembrete)
-Excel no diretório “RISK PT Training”.
-Excluo APAC, selecionar só EM Countries; Só countries com 100M (GLCM); Long exposure >50%
-
-
-RAMP:
-Spreads: Single Names; Index CDS
-Ver quais os Packages de python que acedem ao RAMP (funções): RISK MFI Credit trading.
-
-MRX Views:
-MultiRowRisk; Node: GBCFLM, GBCSFEU, FG…10; Columns: … -> Ver a view no email Patricio.
-
-
-Betas:
-Produzir código python pedido pelo João. Perguntar ao João como ver o Live PnL.
-Tirar os betas das regressões para os principais índices (Traxx, CDX; IG, HY) para todos os Focus Alias -> Usar a View das posições para obter os Focus Alias e depis obter apenas as referencias das Curvas de CDS (não de bonds ou de outros produtos).
-Organizar o código com funções para perceber como otimizar;
-Colocar print do tempo que demora a correr o ciclo que extrai as curvas todas.
-
-
-Listagem/Mapeamento de dados referência:
-Fazer a listagem/Mapeamento: Gtr Name/Code -> Focus Alias -> CDS Curve; Para ser mais fácil tirar do RAMP os dados para excel (através do QCD) (Necessário para ter os valores de spreads para o report MainPos e para calcular os betas)
-Fazer Mapping: Gtr Name -> Curvas; Sectors -> Sub-sectors (EXTRAIR DO PC DA BLOOMBERG Perguntar ao José?) -> Importante para perceber como colocar filtros no Sector report.
-
-
-To do (IMPORTANTE):
-Fazer a estrutura do email que é para enviar na segunda-feira (deixar só as posições por preencher)
-Organizar/Ler emails.
-Fazer PIN dos ficheiros/pastas no Quick Access.
-Fazer pedido do monitor; Pedir dia off para quarta-feira (dia 13) e ir tratar do IRS Jovem nas finanças.
-
 NEWS EXCEL LINK: https://ulisboa-my.sharepoint.com/:x:/g/personal/ist191052_tecnico_ulisboa_pt/IQCoT_ce_rlaSLoYKepWUrjnAfrqEkkyVpISUDP0wcbdGQM?e=LPcTYG
 
 =LET(
@@ -67,12 +13,6 @@ IF(s1>=50; TAKE(v;;1);
 "PnL muito distribuído"
 )))
 )
-
-
-
-
-
-
 
 
 EXCEL (Search tricks)
