@@ -187,9 +187,9 @@ def set_chart_xticks(xvalues: list[str | int | float | datetime], yvalues: list[
     return ax
 def define_grid(nr_vars: int, nr_cols: int | str = "") -> tuple[int, int]: #nr_cols: int = NR_COLUMNS
     if nr_cols == "":
-        if nr_vars <= 3: nr_rows, nr_cols = 1, nr_vars
-        else: nr_cols = int(math.sqrt(nr_vars)); nr_rows = nr_cols + 1 if math.sqrt(nr_vars) > int(math.sqrt(nr_vars)) else nr_cols 
-        #print(n_vars, n_cols, n_rows, n_cols*n_rows)
+        for k in range(1,nr_vars+1):
+            if k <= 3: nr_rows, nr_cols = 1, k
+            else: nr_cols = math.ceil(math.sqrt(k)); nr_rows = nr_rows+1 if nr_rows*nr_cols < k else nr_rows
     else:
         nr_rows: int = 1 # NR_COLUMNS: int = 3
         if nr_vars % nr_cols == 0: nr_rows = nr_vars // nr_cols
@@ -878,7 +878,23 @@ def plot_multi_line_charts(data: DataFrame, vars: list[str] = [], show_per_rows:
 #     show() #savefig("Gráficos/multi_bar_charts.png")
 
 
-
+def plot_scatter_charts_var1(data: DataFrame, var1="", vars: list[str] = [], show_all: bool = False): 
+    variables_types: dict[str, list] = get_variable_types(data)
+    numeric: list[str] = variables_types["numeric"] #+ get_variable_types(data)["binary"] # Binárias/Simbólicas só se estiverem encoded
+    l_vars: list[str] = [var for var in vars if var in numeric] if [var for var in vars if var in numeric] != [] else numeric
+    vars = l_vars
+    if vars != []:
+        rows, cols = define_grid(nr_vars=len(vars))
+        fig, axs = subplots(rows, cols, figsize=(cols * HEIGHT, rows * HEIGHT), squeeze=False) #dpi=300
+        k = 0
+        for i in range(rows):
+            for j in range(cols):
+                if k<len(vars): 
+                    plot_scatter_chart(data[var1], data[vars[k]], title=f"{var1} x {vars[k]}", xlabel=var1, ylabel=vars[k], ax=axs[i, j], show_plot=False)
+                elif k>=len(vars): axs[i, j].scatter(x=[],y=[]); axs[i, j].set_xticks([]); axs[i, j].set_yticks([]); axs[i, j].spines['left'].set_visible(False); axs[i, j].spines['bottom'].set_visible(False)
+                k+=1
+        show() #savefig("Gráficos/multi_scatterplot_charts.png") #savefig(f"images/{file_tag}_sparsity_study.png")
+    else: print("Sparsity class: there are no variables.")
 
 
 # PLOTS
